@@ -18,61 +18,67 @@ This line imports the NumPy library in Python.
 np.random.seed(2112)
 X = np.random.randint(10, 101, size=(5, 5))
 X
-```
 
-```
 array([[48, 11, 15, 67, 21],
       [11, 41, 13, 66, 24],
       [71, 79, 53, 67, 70],
       [77, 35, 91, 19, 96],
       [35, 54, 37, 41, 17]], dtype=int32)
 ```
+This section creates a 5x5 array of random numbers from 10 to 100.
 
 ```
 mean = np.mean(X)
 mean
-```
 
-``np.float64(46.46)``
+np.float64(46.46)
+```
+The overall mean of the array is calculated.
 
 ```
 standard_deviation = np.std(X)
 standard_deviation
-```
 
-``np.float64(25.864075471588002)``
+np.float64(25.864075471588002)
+```
+This function calculates the standard deviation of the array.
 
 ```
-x_normalized = (X - mean) / standard_deviation\n",
+x_normalized = (X - mean) / standard_deviation
 x_normalized
-```
 
-```
 array([[ 0.06340841, -1.36714726, -1.2124926 ,  0.79801809, -0.98051059],
        [-1.36714726, -0.20723725, -1.28981993,  0.75935442, -0.86451959],
        [ 0.95267275,  1.26198209,  0.25672675,  0.79801809,  0.91400909],
        [ 1.18465476, -0.43921926,  1.72594609, -1.05783793,  1.91926443],
        [-0.43921926,  0.29539042, -0.36189192, -0.20723725, -1.13516526]])
 ```
+x_normalized contains the normalized array using the mean and standard deviation.
+Normalize the array using the mean and standard deviation.
 
-``np.mean(x_normalized)``
+```
+np.mean(x_normalized)
 
-``np.float64(0.0)``
+np.float64(0.0)
+```
+This verifies that the mean is approximately 0.
 
-``np.std(x_normalized)``
+```
+np.std(x_normalized)
  
-``np.float64(0.9999999999999999)``
+np.float64(0.9999999999999999)
+```
+This verifies that the standard deviation is approximately 1.
 
 ``np.save("X_normalized.npy", x_normalized)``
+This saves the normalized array as a .npy file.
 
 ## B. Cubes Divisible By 4 Problem"
 
 ```
 C = np.arange(1,101,1)
 C
-```
 
-```
 array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,
       14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,
       27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,
@@ -84,6 +90,9 @@ array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,
 ```
 
 ```
+new_c = C ** 3
+      new_c
+
 array([      1,       8,      27,      64,     125,     216,     343,\n",
       512,     729,    1000,    1331,    1728,    2197,    2744,
       3375,    4096,    4913,    5832,    6859,    8000,    9261,
@@ -100,61 +109,32 @@ array([      1,       8,      27,      64,     125,     216,     343,\n",
       778688,  804357,  830584,  857375,  884736,  912673,  941192,
       970299, 1000000])
 ```
+```
+new_c = new_c.reshape(10,10)
+    new_c
 
-    "new_c = C ** 3\n",
-    "new_c"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 11,
-   "id": "c1eaebc1-02fa-46e9-8def-443f060d0a41",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[      1,       8,      27,      64,     125,     216,     343,\n",
-       "            512,     729,    1000],\n",
-       "       [   1331,    1728,    2197,    2744,    3375,    4096,    4913,\n",
-       "           5832,    6859,    8000],\n",
-       "       [   9261,   10648,   12167,   13824,   15625,   17576,   19683,\n",
-       "          21952,   24389,   27000],\n",
-       "       [  29791,   32768,   35937,   39304,   42875,   46656,   50653,\n",
-       "          54872,   59319,   64000],\n",
-       "       [  68921,   74088,   79507,   85184,   91125,   97336,  103823,\n",
-       "         110592,  117649,  125000],\n",
-       "       [ 132651,  140608,  148877,  157464,  166375,  175616,  185193,\n",
-       "         195112,  205379,  216000],\n",
-       "       [ 226981,  238328,  250047,  262144,  274625,  287496,  300763,\n",
-       "         314432,  328509,  343000],\n",
-       "       [ 357911,  373248,  389017,  405224,  421875,  438976,  456533,\n",
-       "         474552,  493039,  512000],\n",
-       "       [ 531441,  551368,  571787,  592704,  614125,  636056,  658503,\n",
-       "         681472,  704969,  729000],\n",
-       "       [ 753571,  778688,  804357,  830584,  857375,  884736,  912673,\n",
-       "         941192,  970299, 1000000]])"
-      ]
-     },
-     "execution_count": 11,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "new_c = new_c.reshape(10,10)\n",
-    "new_c"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 12,
-   "id": "7c59d7f2-ca27-4268-b5df-1b7af90b8327",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
+array([[      1,       8,      27,      64,     125,     216,     343,
+            512,     729,    1000],
+      [   1331,    1728,    2197,    2744,    3375,    4096,    4913,
+            5832,    6859,    8000],
+      [   9261,   10648,   12167,   13824,   15625,   17576,   19683,
+            21952,   24389,   27000],
+      [  29791,   32768,   35937,   39304,   42875,   46656,   50653,
+            54872,   59319,   64000],
+      [  68921,   74088,   79507,   85184,   91125,   97336,  103823,
+            110592,  117649,  125000],
+      [ 132651,  140608,  148877,  157464,  166375,  175616,  185193,
+            195112,  205379,  216000],
+      [ 226981,  238328,  250047,  262144,  274625,  287496,  300763,
+            314432,  328509,  343000],
+      [ 357911,  373248,  389017,  405224,  421875,  438976,  456533,
+            474552,  493039,  512000],
+      [ 531441,  551368,  571787,  592704,  614125,  636056,  658503,
+            681472,  704969,  729000],
+      [ 753571,  778688,  804357,  830584,  857375,  884736,  912673,
+            941192,  970299, 1000000]])
+```
+
        "array([[False,  True, False,  True, False,  True, False,  True, False,\n",
        "         True],\n",
        "       [False,  True, False,  True, False,  True, False,  True, False,\n",
@@ -391,3 +371,7 @@ array([      1,       8,      27,      64,     125,     216,     343,\n",
  "nbformat": 4,
  "nbformat_minor": 5
 }
+
+README File Version History
+September 3, 2026 - Initial submission
+September 6, 2026 - Added descriptions
