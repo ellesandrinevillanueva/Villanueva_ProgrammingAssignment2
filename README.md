@@ -88,6 +88,7 @@ array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,
       79,  80,  81,  82,  83,  84,  85,  86,  87,  88,  89,  90,  91,
       92,  93,  94,  95,  96,  97,  98,  99, 100])
 ```
+``np.arange`` creates a one-dimensional array that contains integers from 1-100.
 
 ```
 new_c = C ** 3
@@ -109,6 +110,8 @@ array([      1,       8,      27,      64,     125,     216,     343,\n",
       778688,  804357,  830584,  857375,  884736,  912673,  941192,
       970299, 1000000])
 ```
+``new_c`` stores each element of the C array to the third power.
+
 ```
 new_c = new_c.reshape(10,10)
     new_c
@@ -135,34 +138,30 @@ array([[      1,       8,      27,      64,     125,     216,     343,
             941192,  970299, 1000000]])
 ```
 
-       "array([[False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True],\n",
-       "       [False,  True, False,  True, False,  True, False,  True, False,\n",
-       "         True]])"
-      ]
-     },
-     "execution_count": 12,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
+
+```
+array([[False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True],
+      [False,  True, False,  True, False,  True, False,  True, False,
+      True]])
+```
+
     "bool_c = new_c % 4 == 0\n",
     "bool_c"
    ]
