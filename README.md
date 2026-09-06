@@ -191,6 +191,9 @@ array([   1,    4,    9,   16,   25,   36,   49,   64,   81,  100,  121,
             529,  576,  625,  676,  729,  784,  841,  900,  961, 1024, 1089,
             1156, 1225, 1296])
 ```
+The S array contains numbers from 1 to 36 and ** 2 squares the values.
+
+```
 S = S.reshape(6,6)
     S
     
@@ -201,12 +204,16 @@ array([[   1,    4,    9,   16,   25,   36],
       [ 625,  676,  729,  784,  841,  900],
       [ 961, 1024, 1089, 1156, 1225, 1296]])
 ```
+Array S is reshaped into a 6x6 matrix.
+
 ```
 S_mean = np.mean(S)
     S_mean
 
 np.float64(450.1666666666667)
 ```
+The mean of S is calculated and a floating point is returned.
+
 ```
 bool_mean = S > S_mean
     bool_mean
@@ -217,13 +224,18 @@ array([[False, False, False, False, False, False],
       [ True,  True,  True,  True,  True,  True],
       [ True,  True,  True,  True,  True,  True]])
 ```
+``bool_mean`` searches for mean values greater than the integers in the original S array.
+
 ```
 above_mean = S[S > S_mean]
     above_mean
 array([ 484,  529,  576,  625,  676,  729,  784,  841,  900,  961, 1024,
       1089, 1156, 1225, 1296])"
 ```
+``above_mean`` finds S values greater than S_mean.
+
 ``np.save(\"above_mean.npy\", above_mean)``
+This saves ``above_mean`` as a NumPy .npy file.
 
 **README File Version History**
 
