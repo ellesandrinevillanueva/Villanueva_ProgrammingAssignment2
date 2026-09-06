@@ -137,9 +137,12 @@ array([[      1,       8,      27,      64,     125,     216,     343,
       [ 753571,  778688,  804357,  830584,  857375,  884736,  912673,
             941192,  970299, 1000000]])
 ```
-
+``new_c`` is reshaped into a 10x10 array.
 
 ```
+bool_c = new_c % 4 == 0
+    bool_c
+
 array([[False,  True, False,  True, False,  True, False,  True, False,
       True],
       [False,  True, False,  True, False,  True, False,  True, False,
@@ -161,216 +164,69 @@ array([[False,  True, False,  True, False,  True, False,  True, False,
       [False,  True, False,  True, False,  True, False,  True, False,
       True]])
 ```
+``bool_c`` determines if the values are divisible by 4.
 
-    "bool_c = new_c % 4 == 0\n",
-    "bool_c"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 13,
-   "id": "c742a947-efeb-426c-8d9f-590e0a0938ad",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([      8,      64,     216,     512,    1000,    1728,    2744,\n",
-       "          4096,    5832,    8000,   10648,   13824,   17576,   21952,\n",
-       "         27000,   32768,   39304,   46656,   54872,   64000,   74088,\n",
-       "         85184,   97336,  110592,  125000,  140608,  157464,  175616,\n",
-       "        195112,  216000,  238328,  262144,  287496,  314432,  343000,\n",
-       "        373248,  405224,  438976,  474552,  512000,  551368,  592704,\n",
-       "        636056,  681472,  729000,  778688,  830584,  884736,  941192,\n",
-       "       1000000])"
-      ]
-     },
-     "execution_count": 13,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "div_by_4 = new_c[bool_c]\n",
-    "div_by_4"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 14,
-   "id": "b3a72fe6-bd40-43c0-99c1-afe18ce41313",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "np.save(\"div_by_4.npy\", div_by_4)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "fe0a0c5b-b2bd-492d-8228-20c671fe6396",
-   "metadata": {},
-   "source": [
-    "# C. Above-Mean Squares Problem"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 15,
-   "id": "473ad18d-ac65-44ee-8492-eb061769f87d",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([   1,    4,    9,   16,   25,   36,   49,   64,   81,  100,  121,\n",
-       "        144,  169,  196,  225,  256,  289,  324,  361,  400,  441,  484,\n",
-       "        529,  576,  625,  676,  729,  784,  841,  900,  961, 1024, 1089,\n",
-       "       1156, 1225, 1296])"
-      ]
-     },
-     "execution_count": 15,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "S = np.arange(1,37,1) ** 2\n",
-    "S"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 16,
-   "id": "50d15731-6813-4e57-ac12-5ec74e1e125f",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[   1,    4,    9,   16,   25,   36],\n",
-       "       [  49,   64,   81,  100,  121,  144],\n",
-       "       [ 169,  196,  225,  256,  289,  324],\n",
-       "       [ 361,  400,  441,  484,  529,  576],\n",
-       "       [ 625,  676,  729,  784,  841,  900],\n",
-       "       [ 961, 1024, 1089, 1156, 1225, 1296]])"
-      ]
-     },
-     "execution_count": 16,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "S = S.reshape(6,6)\n",
-    "S"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 17,
-   "id": "4ac2c4a9-0115-45b1-8139-ffeb66ab14c9",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "np.float64(450.1666666666667)"
-      ]
-     },
-     "execution_count": 17,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "S_mean = np.mean(S)\n",
-    "S_mean"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 18,
-   "id": "00ab41a0-c807-4531-b2ed-f6f0959cbb78",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[False, False, False, False, False, False],\n",
-       "       [False, False, False, False, False, False],\n",
-       "       [False, False, False, False, False, False],\n",
-       "       [False, False, False,  True,  True,  True],\n",
-       "       [ True,  True,  True,  True,  True,  True],\n",
-       "       [ True,  True,  True,  True,  True,  True]])"
-      ]
-     },
-     "execution_count": 18,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "bool_mean = S > S_mean\n",
-    "bool_mean"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 19,
-   "id": "73feb5e1-2aab-426c-8934-efdd61685ff3",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([ 484,  529,  576,  625,  676,  729,  784,  841,  900,  961, 1024,\n",
-       "       1089, 1156, 1225, 1296])"
-      ]
-     },
-     "execution_count": 19,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "above_mean = S[S > S_mean]\n",
-    "above_mean"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 20,
-   "id": "38ffb4c2-6e5b-422b-a524-13d75f3fd61c",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "np.save(\"above_mean.npy\", above_mean)"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.14.6"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+```
+div_by_4 = new_c[bool_c]
+    div_by_4
+array([      8,      64,     216,     512,    1000,    1728,    2744,
+            4096,    5832,    8000,   10648,   13824,   17576,   21952,
+            27000,   32768,   39304,   46656,   54872,   64000,   74088,
+            85184,   97336,  110592,  125000,  140608,  157464,  175616,
+            195112,  216000,  238328,  262144,  287496,  314432,  343000,
+            373248,  405224,  438976,  474552,  512000,  551368,  592704,
+            636056,  681472,  729000,  778688,  830584,  884736,  941192,
+            1000000])
+```
+``div_by_4`` displays only the numbers divisible by 4.
 
-README File Version History
+# C. Above-Mean Squares Problem
+
+```
+S = np.arange(1,37,1) ** 2
+    S
+
+array([   1,    4,    9,   16,   25,   36,   49,   64,   81,  100,  121,
+            144,  169,  196,  225,  256,  289,  324,  361,  400,  441,  484,
+            529,  576,  625,  676,  729,  784,  841,  900,  961, 1024, 1089,
+            1156, 1225, 1296])
+```
+S = S.reshape(6,6)
+    S
+    
+array([[   1,    4,    9,   16,   25,   36],
+      [  49,   64,   81,  100,  121,  144],
+      [ 169,  196,  225,  256,  289,  324],
+      [ 361,  400,  441,  484,  529,  576],
+      [ 625,  676,  729,  784,  841,  900],
+      [ 961, 1024, 1089, 1156, 1225, 1296]])
+```
+```
+S_mean = np.mean(S)
+    S_mean
+
+np.float64(450.1666666666667)
+```
+```
+bool_mean = S > S_mean
+    bool_mean
+array([[False, False, False, False, False, False],
+      [False, False, False, False, False, False],
+      [False, False, False, False, False, False],
+      [False, False, False,  True,  True,  True],
+      [ True,  True,  True,  True,  True,  True],
+      [ True,  True,  True,  True,  True,  True]])
+```
+```
+above_mean = S[S > S_mean]
+    above_mean
+array([ 484,  529,  576,  625,  676,  729,  784,  841,  900,  961, 1024,
+      1089, 1156, 1225, 1296])"
+```
+``np.save(\"above_mean.npy\", above_mean)``
+
+**README File Version History**
+
 September 3, 2026 - Initial submission
+
 September 6, 2026 - Added descriptions
